@@ -2,7 +2,9 @@
     <string name="app_name">ToDoList</string>
     <string name="main_text">Welcome!</string>
     <string name="check_list_button">Check list</string>
-    <string name="add_button">ADD</string>
+    <string name="add_button">Add</string>
     <string name="item_title">Title</string>
     <string name="description">Description</string>
+    <string name="about">About</string>
+    <string name="main_menu_home">Home</string>
 </resources>
