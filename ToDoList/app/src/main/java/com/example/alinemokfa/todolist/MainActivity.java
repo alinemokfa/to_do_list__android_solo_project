@@ -19,17 +19,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
+        ListView listView = findViewById(R.id.list);
 
         DatabaseHelper helper = new DatabaseHelper(this);
 
         ArrayList<Task> tasks = helper.getAllTasks();
 
         ListViewAdapter listViewAdapter = new ListViewAdapter(this, tasks);
-
-        ListView listView = findViewById(R.id.list);
 
         listView.setAdapter(listViewAdapter);
 
@@ -48,15 +46,23 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.main_menu_home){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-//        } else if (item.getItemId() == R.id.action_???) {
-//            Intent intent = new Intent(this, ???Activity.class);
-//            startActivity(intent);
+        } else if (item.getItemId() == R.id.main_menu_add) {
+            Intent intent = new Intent(this, AddTaskActivity.class);
+            startActivity(intent);
         }
         return true;
     }
 
     public void getTask(View listItemSelected){
         Task selectedTask = (Task) listItemSelected.getTag();
+
+//        Intent intent = new Intent(this, ViewTaskActivity.class);
+//
+//
+//
+//        intent.putExtra("task", selectedTask);
+//
+//        startActivity(intent);
 
         Toast.makeText(this, selectedTask.getTitle(), Toast.LENGTH_SHORT).show();
     }

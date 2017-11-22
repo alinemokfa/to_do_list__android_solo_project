@@ -7,4 +7,8 @@
     <string name="description">Description</string>
     <string name="about">About</string>
     <string name="main_menu_home">Home</string>
+    <string name="add_task_button">Add task</string>
+    <string name="hint_description">Description</string>
+    <string name="main_menu_add">Add Task</string>
+    <string name="hint_title">Title</string>
 </resources>

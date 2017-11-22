@@ -11,6 +11,9 @@ public class Task {
     private String description;
     private boolean completion;
 
+    public Task() {
+    }
+
     public Task(int id, String title, String description, boolean completion)
     {
         this.id = id;
@@ -47,11 +50,11 @@ public class Task {
         this.title = title;
     }
 
-    public void setDescription() {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setCompletion(){
+    public void setCompletion(Boolean completion){
         this.completion = completion;
     }
 }
