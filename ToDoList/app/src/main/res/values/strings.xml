@@ -3,4 +3,6 @@
     <string name="main_text">Welcome!</string>
     <string name="check_list_button">Check list</string>
     <string name="add_button">ADD</string>
+    <string name="item_title">Title</string>
+    <string name="description">Description</string>
 </resources>

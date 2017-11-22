@@ -2,6 +2,7 @@ package com.example.alinemokfa.todolist;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,28 +18,18 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseHelper helper = new DatabaseHelper(this);
 
-        Task task1 = new Task("DO STUFF", "LOTS");
-//        Task task2 = new Task("DO STUFF2", "LOTS2");
-        helper.save(task1);
-//        helper.save(task2);
+        ArrayList<Task> tasks = helper.getAllTasks();
 
-        ArrayList<Task> allTasks = helper.getAllTasks();
+        ListViewAdapter listViewAdapter = new ListViewAdapter(this, tasks);
 
-        Task dbTask = allTasks.get(0);
+        ListView listView = findViewById(R.id.list);
 
-//        helper.deleteTask(dbTask.getID().toString());
+        listView.setAdapter(listViewAdapter);
 
-//        helper.deleteAllTasks();
+        Toast.makeText(this, "Number of tasks: " + tasks.size(), Toast.LENGTH_LONG).show();
+
+        }
 
 
-        task1.setTitle("");
-
-        helper.updateTask(task1);
-
-        allTasks = helper.getAllTasks();
-
-        Toast.makeText(this, "Number of tasks: " + allTasks.size(), Toast.LENGTH_LONG).show();
     }
 
-
-}
