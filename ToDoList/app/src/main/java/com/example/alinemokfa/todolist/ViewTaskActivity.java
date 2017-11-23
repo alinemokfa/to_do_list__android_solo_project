@@ -21,7 +21,7 @@ public class ViewTaskActivity extends AppCompatActivity {
 
         Bundle extras = intent.getExtras();
 
-        TextView taskTitleTextView = findViewById(R.id.view_task_title);
+        EditText taskTitleTextView = findViewById(R.id.view_task_title);
 
         EditText taskDescriptionTextView = findViewById(R.id.view_task_description);
 
@@ -42,18 +42,30 @@ public class ViewTaskActivity extends AppCompatActivity {
 
         finish();
         //the above method instead the below intent
-
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
+        // Intent intent = new Intent(this, MainActivity.class);
+        // startActivity(intent);
 
     }
 
-    public void onUpdateClick(View view){
+    public void onUpdateClick(View listItemSelected){
 
+        EditText viewTaskTitle = findViewById(R.id.view_task_title);
+        EditText viewTaskDescription = findViewById(R.id.view_task_description);
 
+        Intent intent = getIntent();
+
+        Bundle extras = intent.getExtras();
+
+        int task_extra = extras.getInt("taskId");
+
+        Task task = helper.getTaskByID(task_extra);
+
+        task.setTitle(viewTaskTitle.getText().toString());
+        task.setDescription(viewTaskDescription.getText().toString());
+
+        helper.updateTask(task);
+
+        finish();
     }
 
 }
-
-
-
