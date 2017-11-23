@@ -106,4 +106,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.close();
     }
 
+    public Task getTaskByID(int id) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE ID = " + id, null );
+        cursor.moveToNext();
+
+        Task task = new Task();
+        task.setId(cursor.getInt(0));
+        task.setTitle(cursor.getString(1));
+        task.setDescription(cursor.getString(2));
+        task.setCompletion(cursor.getInt(3) > 0);
+
+        cursor.close();
+        database.close();
+        return task;
+    }
+
 }

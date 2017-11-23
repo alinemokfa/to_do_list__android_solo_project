@@ -11,4 +11,6 @@
     <string name="hint_description">Description</string>
     <string name="main_menu_add">Add Task</string>
     <string name="hint_title">Title</string>
+    <string name="update_button">Update</string>
+    <string name="delete_button">Delete</string>
 </resources>

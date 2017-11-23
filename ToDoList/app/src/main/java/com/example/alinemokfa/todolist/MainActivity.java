@@ -16,14 +16,36 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView = findViewById(R.id.list);
+        //because onCreate is only run once
+        // onResume gets called every time the activity gets loaded, so  we don't need this code:
+
+//        ListView listView = findViewById(R.id.list);
+//
+//        DatabaseHelper helper = new DatabaseHelper(this);
+//
+//        ArrayList<Task> tasks = helper.getAllTasks();
+//
+//        ListViewAdapter listViewAdapter = new ListViewAdapter(this, tasks);
+//
+//        listView.setAdapter(listViewAdapter);
+//
+//        Toast.makeText(this, "Number of tasks: " + tasks.size(), Toast.LENGTH_LONG).show();
+
+        }
+
+    @Override //after using finish(), refresh adapter
+    public void onResume(){
+        super.onResume();
 
         DatabaseHelper helper = new DatabaseHelper(this);
+
+        ListView listView = findViewById(R.id.list);
 
         ArrayList<Task> tasks = helper.getAllTasks();
 
@@ -31,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setAdapter(listViewAdapter);
 
-        Toast.makeText(this, "Number of tasks: " + tasks.size(), Toast.LENGTH_LONG).show();
-
-        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,19 +74,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getTask(View listItemSelected){
-        Task selectedTask = (Task) listItemSelected.getTag();
 
-//        Intent intent = new Intent(this, ViewTaskActivity.class);
-//
-//
-//
-//        intent.putExtra("task", selectedTask);
-//
-//        startActivity(intent);
+//from where, to where
+        Intent intent = new Intent(this, ViewTaskActivity.class);
+//defining task and sets = to the specific item/task
+        Task selectedTask = (Task) listItemSelected.getTag();
+//naming
+        intent.putExtra("taskId", selectedTask.getID());
+
+        startActivity(intent);
 
         Toast.makeText(this, selectedTask.getTitle(), Toast.LENGTH_SHORT).show();
     }
 
+    public void onChecked
 
-    }
+}
 

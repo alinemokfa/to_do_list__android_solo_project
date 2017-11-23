@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class AddTaskActivity extends AppCompatActivity {
 
@@ -18,6 +20,7 @@ public class AddTaskActivity extends AppCompatActivity {
         EditText add_task_title = findViewById(R.id.add_task_title);
         EditText add_task_description = findViewById(R.id.add_task_description);
 
+
         DatabaseHelper helper = new DatabaseHelper(this);
 
         Task task = new Task();
@@ -26,8 +29,7 @@ public class AddTaskActivity extends AppCompatActivity {
         task.setCompletion(false);
         helper.save(task);
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish(); //goes back to previous activity
     }
 
 }
