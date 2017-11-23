@@ -58,7 +58,11 @@ public class Task {
         this.description = description;
     }
 
-    public void setCompletion(Boolean completion){
+    public void setCompletion(){
+        this.completion = !this.completion;
+    }
+
+    public void setCompletionToBoolean(Boolean completion){
         this.completion = completion;
     }
 }

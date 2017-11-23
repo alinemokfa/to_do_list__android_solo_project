@@ -69,11 +69,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int id = cursor.getInt(0);
                 String title = cursor.getString(1);
                 String description = cursor.getString(2);
-                int completed = cursor.getInt(3);
-                boolean completedBoolean = (completed == 1);
+
+                String completedStr = cursor.getString(3);
+                boolean completed = completedStr.equals("1");
+
+//                int completed = cursor.getInt(3);
+//                boolean completedBoolean = (completed == 1);
 
 
-                task = new Task(id, title, description, completedBoolean);
+                task = new Task(id, title, description, completed); //instead of completedBoolean
                 tasks.add(task);
             }
         }
@@ -88,6 +92,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_ID, task.getID());
         contentValues.put(COL_TITLE, task.getTitle());
         contentValues.put(COL_DESCRIPTION, task.getDescription());
+//        contentValues.put(COL_COMPLETION, Boolean.toString(task.getCompletion()));
+        //ternary statement
+        contentValues.put(COL_COMPLETION, task.getCompletion()? 1 : 0); //should it be true or false?
         contentValues.put(COL_COMPLETION, Boolean.toString(task.getCompletion()));
         int val = db.update(TABLE_NAME, contentValues, "id = " + task.getID(), null);
         return val != -1;
@@ -115,7 +122,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         task.setId(cursor.getInt(0));
         task.setTitle(cursor.getString(1));
         task.setDescription(cursor.getString(2));
-        task.setCompletion(cursor.getInt(3) > 0);
+        task.setCompletionToBoolean(cursor.getInt(3) > 0);
 
         cursor.close();
         database.close();

@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setAdapter(listViewAdapter);
 
+        Toast.makeText(this, "Number of tasks: " + tasks.size(), Toast.LENGTH_LONG).show();
+
     }
 
     @Override
@@ -87,7 +90,20 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, selectedTask.getTitle(), Toast.LENGTH_SHORT).show();
     }
 
-    public void onChecked
+    public void onCheckedBox(View view){
 
+        DatabaseHelper helper = new DatabaseHelper(this);
+
+        Task selectedTask = (Task) view.getTag();
+
+        selectedTask.setCompletion();
+
+        //communicate to db
+
+        helper.updateTask(selectedTask);
+
+
+
+    }
 }
 

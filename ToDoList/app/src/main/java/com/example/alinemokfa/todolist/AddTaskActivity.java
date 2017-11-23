@@ -26,7 +26,7 @@ public class AddTaskActivity extends AppCompatActivity {
         Task task = new Task();
         task.setTitle(add_task_title.getText().toString());
         task.setDescription(add_task_description.getText().toString());
-        task.setCompletion(false);
+        task.setCompletionToBoolean(false);
         helper.save(task);
 
         finish(); //goes back to previous activity

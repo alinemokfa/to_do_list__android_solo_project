@@ -14,6 +14,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
     }
 
     public void onUpdateTask(View view) {
+
 //        EditText add_task_title = findViewById(R.id.add_task_title);
 //        EditText add_task_description = findViewById(R.id.add_task_description);
 //

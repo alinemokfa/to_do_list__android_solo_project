@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -31,10 +32,15 @@ public class ListViewAdapter extends ArrayAdapter<Task> {
         TextView title = listItemView.findViewById(R.id.title);
         title.setText(currentTaskItem.getTitle());
 
-        TextView year = listItemView.findViewById(R.id.description);
-        year.setText(currentTaskItem.getDescription());
+//        TextView year = listItemView.findViewById(R.id.description);
+//        year.setText(currentTaskItem.getDescription());
+
+        CheckBox checkBox = listItemView.findViewById(R.id.checkBox);
+        checkBox.setChecked(currentTaskItem.getCompletion());
 
         listItemView.setTag(currentTaskItem);
+        checkBox.setTag(currentTaskItem);
+
 
         return listItemView;
     }
