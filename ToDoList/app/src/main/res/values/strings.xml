@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToDoList</string>
+    <string name="app_name">Tae Dae</string>
     <string name="main_text">Welcome!</string>
     <string name="check_list_button">Check list</string>
     <string name="add_button">Add</string>

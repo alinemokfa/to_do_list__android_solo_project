@@ -34,9 +34,8 @@ public class ViewTaskActivity extends AppCompatActivity {
         taskTitleTextView.setText(task.getTitle());
         taskDescriptionTextView.setText(task.getDescription());
     }
-    //create event
+
     public void onDeleteClick(View view){
-        //hook up method to button before writting method
 
         helper.deleteTask(task.getID().toString());
 
